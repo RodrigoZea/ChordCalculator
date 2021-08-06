@@ -34,7 +34,23 @@ def generateChords(majorKey):
         for pos in chordPos:
             chord.append(majorKey[pos%7])
 
-        print(chord)  
+        if (i == 0 or i == 3 or i == 4):
+            print(chord, " - Mayor")
+        elif (i == 1 or i == 2 or i == 5):
+            print(chord, " - Menor")
+        elif (i == 6):
+            print(chord, "- Disminuido")
+        else:
+            print(chord)  
+
+#['Do', 'Re', 'Mi', 'Fa', 'Sol', 'La', 'Si']
+#mayor: Do Fa Sol
+#menor: Re menor Mi Menor La menor
+#disminuido: Si
+
+#['Fa#', 'Sol#', 'La#', 'Si', 'Do#', 'Re#', 'Fa']
+#mayor: Fa# Si Do#
+#menor:
 
 def main():
     startingNote = input("Ingrese la nota inicial (0: Do, 1: Do, ..., 11: Si): ")
