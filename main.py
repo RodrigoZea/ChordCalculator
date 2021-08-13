@@ -41,6 +41,7 @@ def generateChords(majorKey):
 
 
 def generateQualityChords(chords):
+    qualityChordsArray = []
     quality = ""
     for chord in chords:
         firstDistance = notesArray.index(chord[0]) - notesArray.index(chord[1])
@@ -55,7 +56,9 @@ def generateQualityChords(chords):
         secondDistance = abs(secondDistance)
 
         quality = getQuality(firstDistance, secondDistance)
-        print(chord, quality)
+        qualityChordsArray.append((chord, quality))
+    
+    return qualityChordsArray
 
 def getQuality(firstDistance, secondDistance):
     quality = ""
@@ -72,15 +75,20 @@ def getQuality(firstDistance, secondDistance):
 
     return quality
 
-"""
-['Do' - 4 - 'Mi' - 3 - 'Sol']
-['Re' - 3 - 'Fa' - 4 - 'La']
-['Mi' - 3 'Sol' - 4 - 'Si']
-['Fa' - 4 - 'La' - 3 - 'Do']
-['Sol' - 4 - 'Si' - 3 - 'Re']
-['La' - 3 - 'Do' - 4 - 'Mi']
-['Si' - 3 - 'Re' - 3 - 'Fa']
-"""
+def getGrade(grade):
+    # Re menor subdominante
+    #1er 3er y 6to grados -> tonica
+    #2do y 4to -> subdominante
+    #5to y 7mo -> dominante
+    gradeType = ""
+    if (grade == 0 or grade == 2 or grade == 5):
+        gradeType = "Tónica"
+    elif (grade == 1 or grade == 3):
+        gradeType = "Subdominante"
+    elif (grade == 4 or grade == 6):
+        gradeType = "Dominante"
+
+    return gradeType
 
 def main():
     startingNote = input("Ingrese la nota inicial (0: Do, 1: Do, ..., 11: Si): ")
@@ -96,4 +104,25 @@ def main():
         chords = generateChords(majorKey)
         generateQualityChords(chords)
 
-main()
+
+def returnGrade():
+    grado = input("Ingrese el grado (1-7): ")
+    #tonalidad
+
+    if (int(grado) < 8):
+        startingNote = input("Ingrese la nota inicial (0: Do, 1: Do, ..., 11: Si): ")
+
+        if (int(startingNote) < 12):
+                gradoUse = int(grado)-1
+                majorKey = generateMajorKey(int(startingNote))
+                chords = generateChords(majorKey)
+                qualityChords = generateQualityChords(chords)
+
+                chordGrade = getGrade(gradoUse)
+                chordOnIndex = qualityChords[gradoUse]
+
+                print("ACORDE: ", chordOnIndex[0])
+                print("CALIDAD: ", chordOnIndex[1])
+                print("GRADO: ", chordGrade)
+    
+returnGrade()
