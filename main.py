@@ -91,7 +91,7 @@ def getGrade(grade):
     return gradeType
 
 def main():
-    startingNote = input("Ingrese la nota inicial (0: Do, 1: Do, ..., 11: Si): ")
+    startingNote = input("Ingrese la nota inicial (0: Do, 1: Do#, ..., 11: Si): ")
 
     if (int(startingNote) < 12):
         print("ESCALA MAYOR:")
@@ -110,7 +110,7 @@ def returnGrade():
     #tonalidad
 
     if (int(grado) < 8):
-        startingNote = input("Ingrese la nota inicial (0: Do, 1: Do, ..., 11: Si): ")
+        startingNote = input("Ingrese la nota inicial (0: Do, 1: Do#, ..., 11: Si): ")
 
         if (int(startingNote) < 12):
                 gradoUse = int(grado)-1
