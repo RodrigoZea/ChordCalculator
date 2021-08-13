@@ -1,18 +1,18 @@
 # Chords program
 
 notesArray = [
-    "Do",
-    "Do#",
-    "Re",
-    "Re#",
-    "Mi",
-    "Fa",
-    "Fa#",
-    "Sol",
-    "Sol#",
-    "La",
-    "La#",
-    "Si"
+    "Do", #0, 12, 24
+    "Do#", #1, 13, 25
+    "Re", #2, 14, 26
+    "Re#", #3, 15, 27
+    "Mi", #4, 16, 28
+    "Fa", #5, 17, 29
+    "Fa#", #6, 18, 30
+    "Sol", #7, 19, 31
+    "Sol#", #8, 20, 32
+    "La", #9, 21, 33
+    "La#", #10, 22, 34
+    "Si" #11, 23, 35
 ]
 
 #TT 1/2T TT 1/2T
@@ -121,6 +121,7 @@ def returnGrade():
                 chordGrade = getGrade(gradoUse)
                 chordOnIndex = qualityChords[gradoUse]
 
+                print("NOTA: ", notesArray[int(startingNote)])
                 print("ACORDE: ", chordOnIndex[0])
                 print("CALIDAD: ", chordOnIndex[1])
                 print("GRADO: ", chordGrade)
